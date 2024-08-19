@@ -51,8 +51,11 @@ function App() {
       </div>
     );
   }
+
+  /** Changed <div> to <> (or <Fragment> can be used, make sure to add Fragment in import React)
+  to remove the additional and unnecessary <div> */
   return (
-    <div>
+    <> 
       <Header />
       <main>
         <section id="core-concepts">
@@ -87,11 +90,15 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[3]} /> */}
 
             {/* Passing a single prop object */}
-            <CoreConcept concept={CORE_CONCEPTS[0]} /> 
+            {/* <CoreConcept concept={CORE_CONCEPTS[0]} /> 
             <CoreConcept concept={CORE_CONCEPTS[1]} /> 
             <CoreConcept concept={CORE_CONCEPTS[2]} /> 
-            <CoreConcept concept={CORE_CONCEPTS[3]} /> 
+            <CoreConcept concept={CORE_CONCEPTS[3]} />  */}
 
+            {/* Outputting list data dynamically */}
+            {CORE_CONCEPTS.map((conceptItem) => (
+              <CoreConcept key={conceptItem.title} {...conceptItem} /> 
+            ))}
           </ul>
         </section>
         <section id="examples">
@@ -125,7 +132,7 @@ function App() {
           { tabContent }
         </section> 
       </main>
-    </div>
+    </>
   );
 }
 
